@@ -12,6 +12,12 @@
     <artifactId>personal-project-credit</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>credit-server-webapp</module>
+        <module>credit-server-model</module>
+        <module>credit-server-api</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -19,6 +25,34 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <project.deploy.name>credit-server</project.deploy.name>
+                <profile.name>dev</profile.name>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <project.deploy.name>credit-server</project.deploy.name>
+                <profile.name>test</profile.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <project.deploy.name>credit-server</project.deploy.name>
+                <profile.name>prd</profile.name>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

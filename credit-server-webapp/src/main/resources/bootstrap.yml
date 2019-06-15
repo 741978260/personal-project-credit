@@ -1,0 +1,36 @@
+server:
+  port: 30000
+  servlet:
+    context-path: /
+management:
+  endpoint:
+  endpoints:
+    web:
+      exposure:
+        include: ["health","prometheus"]
+spring:
+  application:
+    name: @project.deploy.name@
+  nodeId: ${nodeId:1}
+  profiles:
+    active: @profile.name@
+  cloud:
+    consul:
+      discovery:
+        heartbeat:
+          enabled: true
+          ttlValue: 5
+        preferIpAddress: true
+        enabled: true
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        service-name: ${spring.application.name}
+        query-passing: true
+        register: true
+
+---
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
