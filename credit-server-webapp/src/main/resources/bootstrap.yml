@@ -14,18 +14,6 @@ spring:
   nodeId: ${nodeId:1}
   profiles:
     active: @profile.name@
-  cloud:
-    consul:
-      discovery:
-        heartbeat:
-          enabled: true
-          ttlValue: 5
-        preferIpAddress: true
-        enabled: true
-        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-        service-name: ${spring.application.name}
-        query-passing: true
-        register: true
 
 ---
 spring:
@@ -34,3 +22,13 @@ spring:
     consul:
       host: 127.0.0.1
       port: 8500
+      discovery:
+        enabled: true
+        heartbeat:
+          enabled: true
+          ttl-value: 5
+        register: true
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        service-name: ${spring.application.name}
+        query-passing: true
