@@ -14,14 +14,14 @@ spring:
   nodeId: ${nodeId:1}
   profiles:
     active: @profile.name@
-
----
-spring:
-  profiles: dev
   cloud:
+    config:
+      profile: ${spring.profiles.active}
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
     consul:
-      host: 127.0.0.1
-      port: 8500
       discovery:
         enabled: true
         heartbeat:
@@ -32,3 +32,32 @@ spring:
         instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
         service-name: ${spring.application.name}
         query-passing: true
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      label: dev
+    consul:
+      host: 127.0.0.1
+      port: 8500
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      label: dev
+    consul:
+      host: 127.0.0.1
+      port: 8500
+
+---
+spring:
+  profiles: prd
+  cloud:
+    config:
+      label: dev
+    consul:
+      host: 127.0.0.1
+      port: 8500
