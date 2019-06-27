@@ -16,7 +16,29 @@
         <module>credit-server-webapp</module>
         <module>credit-server-model</module>
         <module>credit-server-api</module>
+        <module>credit-server-bird</module>
     </modules>
+
+    <properties>
+        <druid.version>1.1.10</druid.version>
+        <mybatisplus.version>3.0.5</mybatisplus.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}
+                </version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>

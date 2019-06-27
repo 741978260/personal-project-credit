@@ -41,7 +41,16 @@ spring:
     consul:
       host: 127.0.0.1
       port: 8500
-
+  datasource:
+    druid:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      url: jdbc:mysql://127.0.0.1:3306/d_credit?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      max-active: 100
+      initial-size: 20
+      max-wait: 60000
+      min-idle: 10
 ---
 spring:
   profiles: test
@@ -51,6 +60,16 @@ spring:
     consul:
       host: 127.0.0.1
       port: 8500
+  datasource:
+    druid:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      url: jdbc:mysql://127.0.0.1:3306/d_credit?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      max-active: 100
+      initial-size: 20
+      max-wait: 60000
+      min-idle: 10
 
 ---
 spring:

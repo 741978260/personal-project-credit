@@ -10,6 +10,17 @@
     <artifactId>credit-server-webapp</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.mumu</groupId>
+            <artifactId>credit-server-model</artifactId>
+            <version>${project.parent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.xuxueli</groupId>
+                    <artifactId>xxl-job-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
